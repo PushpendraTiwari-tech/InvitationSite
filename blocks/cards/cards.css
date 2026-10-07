@@ -9,7 +9,7 @@
 
 .cards > ul > li {
   border: 1px solid red;
-  background-color:red;
+  background-color:blue;
 }
 
 .cards .cards-card-body {
