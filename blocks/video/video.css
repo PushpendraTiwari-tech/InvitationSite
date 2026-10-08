@@ -1,0 +1,46 @@
+.video {
+  margin: 32px 0;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 24px 0;
+}
+
+.video-element {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-element:focus {
+  outline: 2px solid var(--primary-color, #0078d4);
+  outline-offset: 2px;
+}
+
+.video-iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-caption {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-color, #333);
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    margin: 16px 0;
+  }
+
+  .video-caption {
+    font-size: 12px;
+  }
+}
