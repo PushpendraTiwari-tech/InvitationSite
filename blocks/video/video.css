@@ -1,46 +1,78 @@
 .video {
-  margin: 32px 0;
+  text-align: center;
+  max-width: 900px;
+  margin: 24px auto;
 }
 
-.video-container {
-  width: 100%;
+.video[data-embed-loaded='false']:not(.placeholder) {
+  /* reserve an approximate space to avoid extensive layout shifts */
+  aspect-ratio: 16 / 9;
+}
+
+.video > div {
+  display: flex;
+  justify-content: center;
+}
+
+.video video {
   max-width: 100%;
-  margin: 24px 0;
 }
 
-.video-element {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.video-element:focus {
-  outline: 2px solid var(--primary-color, #0078d4);
-  outline-offset: 2px;
-}
-
-.video-iframe {
+.video .video-placeholder {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-.video-caption {
-  margin-top: 16px;
-  font-size: 14px;
-  color: var(--text-color, #333);
-  text-align: center;
-  font-style: italic;
+.video .video-placeholder > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
 }
 
-@media (max-width: 768px) {
-  .video-container {
-    margin: 16px 0;
-  }
+.video[data-embed-loaded='true'] .video-placeholder,
+.video[data-embed-loaded='false'] .video-placeholder + * {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
 
-  .video-caption {
-    font-size: 12px;
-  }
+.video .video-placeholder picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video .video-placeholder-play button {
+  position: relative;
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  outline: 2px solid;
+  padding: 0;
+}
+
+.video .video-placeholder-play button::before {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 0;
+  height: 24px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%);
+}
+
+.video .video-placeholder-play button:focus,
+.video .video-placeholder-play button:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+  background-color: black;
 }
